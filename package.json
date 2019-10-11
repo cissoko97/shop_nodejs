@@ -1,0 +1,22 @@
+{
+  "name": "userproduct",
+  "version": "1.0.0",
+  "description": "getting started app with nodeJs",
+  "main": "serveur.js",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "mysql2": "^1.7.0",
+    "sequelize": "^5.19.2",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.1"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon serveur.js"
+  },
+  "author": "CK_coder",
+  "license": "ISC"
+}
