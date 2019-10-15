@@ -5,9 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING
   }, {});
-  User.associate = function(models) {
+  User.associate = function (models) {
     // associations can be defined here
-    models.User.has 
+    //One user has many products
+    User.hasMany(models.Product, { as: 'products', foreignKey: 'userId' });
+    //One user has many Task
+    User.hasMany(models.Task, { as: 'tasks', foreignKey: 'userId' });
   };
   return User;
 };

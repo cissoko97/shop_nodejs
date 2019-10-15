@@ -1,13 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Product = sequelize.define('Product', {
-    slug: DataTypes.STRING,
+    name: DataTypes.STRING,
     price: DataTypes.INTEGER,
     issolid: DataTypes.BOOLEAN
   }, {});
   Product.associate = function (models) {
-    // Product belongs to User
-    Product.belongsTo(models.User);
+    // associations can be defined here
+    Product.belongsTo(models.User, {
+
+    });
   };
-  return product;
+  return Product;
 };
