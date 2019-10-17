@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/fontawesome.min.css">
+    <title>Shop_APP</title>
 </head>
 
 <body>
@@ -33,6 +34,8 @@
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" class="form-control" name="password" placeholder="Your Password">
+                        <span
+                            class="text-danger"><% if(typeof(error.password) == undefined){error.password} %></span>
                     </div>
                     <div class="form-group">
                         <label>Password confirm</label>
@@ -45,6 +48,12 @@
             </div>
         </div>
     </div>
+
+    <% if(typeof(error) == undefined){ -%>
+    <h5><%= JSON.stringify(error,null,4) %></h5>
+    <% } else { -%>
+    <h5>Bonjour depuis error test Merci</h5>
+    <% } -%>
 </body>
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/fontawesome.min.css">
+    <title>Shop_APP</title>
 </head>
 
 <body>
@@ -21,93 +22,63 @@
     <br>
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 offset-sm-3">
-                <form class="form-inline" method="POST" action="/api/tasks/add">
+            <div class="col-sm-9 offset-sm-1">
+                <form class="form-inline" method="POST" action="/api/products/save">
                     <div class="form-group">
-                        <label class="sr-only">Label</label>
-                        <input type="text" class="form-control" placeholder="Label" name="label">
+                        <label class="sr-only">Name</label>
+                        <input type="text" class="form-control" placeholder="name" name="name">
                     </div>
-                    <div class="form-group mx-sm-3 ">
-                        <label class="sr-only">Password</label>
-                        <input type="number" class="form-control" placeholder="Priority" name="priority">
+                    <div class="form-group mx-sm-3">
+                        <label class="sr-only">Price</label>
+                        <input type="number" class="form-control" placeholder="Price" name="price">
                     </div>
-                    <button type="submit" class="btn btn-success">Add Task</button>
+                    <div class="form-group mx-sm-3">
+                        <label class="sr-only">type</label>
+                        <input type="checkbox" class="form-control" placeholder="type" name="type">
+                    </div>
+                    <div class="form-group mx-sm-3">
+                        <label class="sr-only">Quantity</label>
+                        <input type="number" class="form-control" placeholder="Quantity" name="quantity">
+                    </div>
+                    <button type="submit" class="btn btn-success">Add Product</button>
                 </form>
             </div>
         </div>
         <br>
-        <div class="card border-warning">
+        <div class="card">
             <div class="card-header">
-                Ma listes de tâches
+                Ma liste de produits
             </div>
-            <div class="card-body text-warning">
+            <div class="card-body table-responsive">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Label</th>
-                            <th scope="col">Priority</th>
-                            <th scope="col">actions</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">price</th>
+                            <th scope="col">Nature</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <% products.forEach(function(product) { -%>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
+                            <th scope="row"><%= product.id %></th>
+                            <td><%= product.name %></td>
+                            <td>Otto</td>
+                            <td><%= product.issolid %></td>
                             <td>Otto</td>
                             <td>
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-secondary active">
-                                        <input type="radio" name="options" id="option1" autocomplete="off" checked>
-                                        Active
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" name="options" id="option2" autocomplete="off"> Radio
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" name="options" id="option3" autocomplete="off"> Radio
-                                    </label>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="/api/products/delete/<%= product.id%>" class="btn btn-danger">delete <span
+                                            class="fa fa-camera"></span></a>
+                                    <a href="/api/products/update/<%= product.id%>" class="btn btn-info">update <span
+                                            class="fa fa-edit"></span></a>
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-secondary active">
-                                        <input type="radio" name="options" id="option1" autocomplete="off" checked>
-                                        Active
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" name="options" id="option2" autocomplete="off"> Radio
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" name="options" id="option3" autocomplete="off"> Radio
-                                    </label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-secondary active">
-                                        <input type="radio" name="options" id="option1" autocomplete="off" checked>
-                                        Active
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" name="options" id="option2" autocomplete="off"> Radio
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" name="options" id="option3" autocomplete="off"> Radio
-                                    </label>
-                                </div>
-                            </td>
-                        </tr>
+                        <% }) -%>
                     </tbody>
                 </table>
             </div>

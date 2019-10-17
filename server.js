@@ -30,6 +30,5 @@ server.use((req, res, next) => {
 //Starting the server
 server.listen(PORT, function () {
   console.log(`server start on ${PORT}`);
-  console.log(__dirname)
 });
 
