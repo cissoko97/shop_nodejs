@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/solid.css">
+    <title>Shop_APP</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand"><%= user.email %></a>
+        <!-- <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+        <a class="navbar-brand" href="/api/users/logout">Deconnexion</a>
+    </nav>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 offset-sm-1">
+                <form class="form-inline" method="POST" action="/api/products/save">
+                    <div class="form-group">
+                        <label class="sr-only">Name</label>
+                        <input type="text" class="form-control" placeholder="name" name="name">
+                    </div>
+                    <div class="form-group mx-sm-3">
+                        <label class="sr-only">Price</label>
+                        <input type="number" class="form-control" placeholder="Price" name="price">
+                    </div>
+                    <div class="form-group mx-sm-3">
+                        <label class="sr-only">type</label>
+                        <input type="checkbox" class="form-control" placeholder="type" name="type">
+                    </div>
+                    <div class="form-group mx-sm-3">
+                        <label class="sr-only">Quantity</label>
+                        <input type="number" class="form-control" placeholder="Quantity" name="quantity">
+                    </div>
+                    <button type="submit" class="btn btn-success">Add Product</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-header">
+                Ma liste de produits
+            </div>
+            <div class="card-body table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">price</th>
+                            <th scope="col">Nature</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% products.forEach(function(product) { -%>
+                        <tr>
+                            <th scope="row"><%= product.id %></th>
+                            <td><%= product.name %></td>
+                            <td><%= product.price %></td>
+                            <td><%= product.issolid %></td>
+                            <td><%= product.quantity %></td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="/api/products/delete/<%= product.id %>" class="btn btn-danger">delete <i
+                                            class="fas fa-trash"></i></a>
+                                    <!-- <a href="/api/products/update/<%= product.id %>" class="btn btn-warning">update <i class="fas fa-edit"></i></a> -->
+                                </div>
+                            </td>
+                        </tr>
+                        <% }) -%>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                thanks for appreciation
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+</script>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/fontawesome.min.css">
+    <title>Shop_APP</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand">Shop App (Registrations View)</a>
+    </nav>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 offset-sm-4">
+                <form action="/api/users/register" method="POST">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Your name">
+                        <span class="text-danger"><% if(!error && !error.name){ -%>
+                            <%= error.name %> <% } -%></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" name="email" placeholder="Your email"><span
+                            class="text-danger"><% if((typeof(error) != undefined) && (typeof(error.email) != undefined)){ -%>
+                            <%= error.email %> <% } -%></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Your Password">
+                        <span
+                            class="text-danger"><% if((typeof(error) != undefined) && (typeof(error.password) != undefined)){ -%>
+                            <%= error.password %> <% } -%></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Password confirm</label>
+                        <input type="password" class="form-control" name="password_confirm" placeholder="Your Password">
+                        <span
+                            class="text-danger"><% if((typeof(error) != undefined) && (typeof(error.password) != undefined)){ -%>
+                            <%= error.password %> <% } -%></span>
+                    </div>
+                    <div>
+                        <input type="submit" value="S'inscrire" class="btn btn-success btn-block">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+</script>
+
+</html>
