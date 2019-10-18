@@ -8,6 +8,7 @@ module.exports = {
             name: req.body.name,
             UserId: req.session.user.id,
             price: req.body.price,
+            quantity: req.body.quantity,
             issolid: (req.body.type == 'on') ? 1 : 0
         }
         //Possibilité d'ajouter les controles de validations

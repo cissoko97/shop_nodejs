@@ -67,20 +67,30 @@ module.exports = {
 
     login: function (req, res) {
         console.log(`login function`);
+        params = {};
+        errors = {};
+        params.email = req.query.email;
+        params.password = req.query.password;
         models.User.findOne({
-            include: [],
             where: {
-                email: req.query.email,
-                password: req.query.password
+                email: params.email,
             }
         }).then(result => {
             if (result) {
-                req.session.user = result;
-                res.status(201).redirect('/api/home');
-            } else {
-                res.status(404).json({
-                    'message': 'User not found for email and Password'
+                bcrypt.compare(params.password, result.password).then(same => {
+                    if (same) {
+                        req.session.user = result;
+                        res.status(201).redirect('/api/home');
+                    } else {
+                        errors.password = "Incorrect password"
+                        res.status(201).render('login.ejs', { errors, params });
+                    }
+                }).catch(err => {
+                    console.log('Login error ', 'Something when wrong')
                 })
+            } else {
+                params.email = 'email not found';
+                res.status(201).render('login.ejs', { errors, params });
             }
         }).catch(err => {
             console.log('Error', err);

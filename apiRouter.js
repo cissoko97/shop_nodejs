@@ -10,12 +10,12 @@ exports.router = (function () {
 
     //get login views
     apiRouter.get('/', (req, res) => {
-        res.status(201).render('login.ejs');
+        res.status(201).render('login.ejs' , { error: false, params: false });
     });
 
     //return register views
     apiRouter.get('/users/register', (req, res) => {
-        res.status(201).render('register.ejs')
+        res.status(201).render('register.ejs', { error: false, newuser: false })
     })
 
     //return principal views of application

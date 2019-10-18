@@ -13,10 +13,6 @@
 <body>
     <nav class="navbar navbar-dark bg-primary">
         <a class="navbar-brand">Shop App (Registrations View)</a>
-        <!-- <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form> -->
     </nav>
     <br>
     <div class="container-fluid">
@@ -26,20 +22,28 @@
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Your name">
+                        <span class="text-danger"><% if(!error && !error.name){ -%>
+                            <%= error.name %> <% } -%></span>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="text" class="form-control" name="email" placeholder="Your email">
+                        <input type="text" class="form-control" name="email" placeholder="Your email"><span
+                            class="text-danger"><% if((typeof(error) != undefined) && (typeof(error.email) != undefined)){ -%>
+                            <%= error.email %> <% } -%></span>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" class="form-control" name="password" placeholder="Your Password">
                         <span
-                            class="text-danger"><% if(typeof(error.password) == undefined){error.password} %></span>
+                            class="text-danger"><% if((typeof(error) != undefined) && (typeof(error.password) != undefined)){ -%>
+                            <%= error.password %> <% } -%></span>
                     </div>
                     <div class="form-group">
                         <label>Password confirm</label>
                         <input type="password" class="form-control" name="password_confirm" placeholder="Your Password">
+                        <span
+                            class="text-danger"><% if((typeof(error) != undefined) && (typeof(error.password) != undefined)){ -%>
+                            <%= error.password %> <% } -%></span>
                     </div>
                     <div>
                         <input type="submit" value="S'inscrire" class="btn btn-success btn-block">
@@ -48,12 +52,6 @@
             </div>
         </div>
     </div>
-
-    <% if(typeof(error) == undefined){ -%>
-    <h5><%= JSON.stringify(error,null,4) %></h5>
-    <% } else { -%>
-    <h5>Bonjour depuis error test Merci</h5>
-    <% } -%>
 </body>
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
