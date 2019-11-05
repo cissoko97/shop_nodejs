@@ -43,6 +43,12 @@ sequelize db:migrate
 
 reassure you to have the SGBD mysql deployed on your machine
 
+update the property to database connection (development) on 
+
+```
+config\config.json
+```
+
 and start server with
 
 ```
