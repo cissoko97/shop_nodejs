@@ -52,5 +52,15 @@ config\config.json
 and start server with
 
 ```
-nodemon server.js
+npm start
 ```
+
+in your favorite browser launch
+
+```
+localhost:9000
+```
+
+the following view will be showing
+
+![Alt Text](public/img/home.jpg)
