@@ -63,9 +63,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% products.forEach(function(product) { -%>
+                        <% products.forEach(function(product , id) { -%>
                         <tr>
-                            <th scope="row"><%= product.id %></th>
+                            <th scope="row"><%= (id+1) %></th>
                             <td><%= product.name %></td>
                             <td><%= product.price %></td>
                             <td><%= product.issolid %></td>
