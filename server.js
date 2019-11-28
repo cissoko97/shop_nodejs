@@ -24,7 +24,10 @@ server.use('/api', apiRouter);
 
 //On redirige vers la page de login quand l'url n'est pas presente
 server.use((req, res, next) => {
-  res.redirect('/api');
+  if (req.session.user)
+    res.redirect('/api/home')
+  else
+    res.redirect('/api');
 });
 
 //Starting the server
